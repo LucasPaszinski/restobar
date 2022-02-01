@@ -20,10 +20,11 @@ defmodule RestobarWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", RestobarWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", RestobarWeb do
+    pipe_through :api
+
+    resources "/restaurants", RestaurantController, except: [:new, :edit]
+  end
 
   # Enables LiveDashboard only for development
   #
