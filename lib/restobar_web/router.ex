@@ -23,7 +23,9 @@ defmodule RestobarWeb.Router do
   scope "/api", RestobarWeb do
     pipe_through :api
 
-    resources "/restaurants", RestaurantController, except: [:new, :edit]
+    resources "/restaurants", RestaurantController, except: [:new, :edit] do
+      resources "/supplies", SupplyController, except: [:new, :edit]
+    end
   end
 
   # Enables LiveDashboard only for development
